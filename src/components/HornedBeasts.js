@@ -1,4 +1,7 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
 class HornedBeast extends React.Component {
     constructor(props) {
@@ -11,17 +14,28 @@ class HornedBeast extends React.Component {
     render() {
         return (
             <div>
-                <h2>{this.props.title}</h2>
+                <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src={this.props.imgURL} onClick={this.likes} alt={this.props.title} title={this.props.title}/>
+                    <Card.Body>
+                        <Card.Title>{this.props.title}</Card.Title>
+                        <Card.Text>
+                         {this.props.description}
+                        </Card.Text>
+                        <Button variant="primary" onClick={this.likes}>Likes😾: {this.state.likesCounter}</Button>
+                    </Card.Body>
+                </Card>
+
+                {/* <h2>{this.props.title}</h2>
                 <img
-                    onClick={this.state.likes}
+                    onClick={this.likes}
                     src={this.props.imgURL}
                     alt={this.props.title}
                     title={this.props.title} />
-                    <p>{this.state.likesCounter}</p>
+                <p>😾: {this.state.likesCounter}</p> */}
             </div>
         )
     }
-    
+
     likes = () => {
         this.setState({
             likesCounter: this.state.likesCounter + 1
