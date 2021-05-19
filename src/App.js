@@ -15,11 +15,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         < Header />
         < Main data={this.state.data}/ >
         < Footer />
-      </div>
+      </>
     )
   }
 }

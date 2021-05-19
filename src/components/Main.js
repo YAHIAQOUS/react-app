@@ -1,6 +1,6 @@
 import React from 'react';
 import HornedBeast from './HornedBeasts'
-
+import CardColumns from 'react-bootstrap/CardColumns'
 
 
 class Main extends React.Component {
@@ -14,7 +14,8 @@ class Main extends React.Component {
 
   render() {
     return (
-      <>
+      <CardColumns>
+      <div>
         {this.props.data.map(item => {
           return (
             <HornedBeast
@@ -24,7 +25,8 @@ class Main extends React.Component {
             />
           )
         })}
-      </>
+      </div>
+      </CardColumns>
     )
   }
 }
