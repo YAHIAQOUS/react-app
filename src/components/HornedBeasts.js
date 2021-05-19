@@ -2,28 +2,59 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-// import Modal from 'react-bootstrap/Modal';
+import SelectedBeast from './SelectedBeast';
 
 
 class HornedBeast extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            likesCounter: 0
+            likesCounter: 0,
+            show: false,
+            imgURL:'',
+            title:'',
+            description:''
         }
-        // this.handleClose = {
-        //     setShow: false,
-        // }
-        // this.handleShow = {
-        //     setShow: true
-        // }
     }
+
+
+    likes = () => {
+        this.setState({
+            likesCounter: this.state.likesCounter + 1
+        })
+    }
+
+    handleShow =(event)=>{
+        this.setState({
+            show:true,
+            imgURL:this.props.imgURL,
+            title:this.props.title,
+            description:this.props.description
+        })
+        console.log(this.imgURL);
+    }
+
+    handleClose=()=>{
+        this.setState({
+            show:false
+        })
+    }
+
+
+    // updateData=()=>{
+    //     this.setState({
+    //         imgURL: ,
+    //         title:,
+    //         description:
+    //     })
+    // }
+
 
     render() {
         return (
             <div>
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={this.props.imgURL} alt={this.props.title} title={this.props.title} />
+                <Card style={{ width: '18rem' }} >
+                    <Card.Img onClick={this.handleShow} variant="top" src={this.props.imgURL} alt={this.props.title} title={this.props.title} />
                     <Card.Body>
                         <Card.Title>{this.props.title}</Card.Title>
                         <Card.Text>
@@ -33,6 +64,14 @@ class HornedBeast extends React.Component {
                     </Card.Body>
                 </Card>
 
+                <SelectedBeast 
+                show={this.state.show}
+                handleClose={this.handleClose}
+                likesCounter={this.state.likesCounter}
+                imgURL={this.state.imgURL}
+                title={this.state.title}
+                description={this.state.description}
+                />
 
                 {/* <h2>{this.props.title}</h2>
                 <img
@@ -44,45 +83,6 @@ class HornedBeast extends React.Component {
             </div>
         )
     }
-
-    likes = () => {
-        this.setState({
-            likesCounter: this.state.likesCounter + 1
-        })
-    }
-
-
-    // popup = () => {
-    //     // const [show, setShow] = useState(true);
-    //     // const handleClose = () => setShow(false);
-    //     // const handleShow = () => setShow(true);
-
-    //     return (
-    //         <>
-    //             <Button variant="primary" onClick={handleShow}>
-    //                 Click here
-    //             </Button>
-
-    //             <Modal show={show} onHide={handleClose}>
-    //                 <Modal.Header closeButton>
-    //                     <Modal.Title>{this.props.title}</Modal.Title>
-    //                 </Modal.Header>
-    //                 <Modal.Body>{this.props.description}</Modal.Body>
-    //                 <Modal.Footer>
-    //                     <Button variant="secondary" onClick={handleClose}>
-    //                         Close
-    //             </Button>
-    //                     <Button variant="primary" onClick={this.componentWillReceivePropshandleClose}>
-    //                         Save Changes
-    //             </Button>
-    //                 </Modal.Footer>
-    //             </Modal>
-    //         </>
-    //     );
-
-    //     // render(<Example />);
-    // }
-
 }
 
 export default HornedBeast;
