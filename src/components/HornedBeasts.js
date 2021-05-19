@@ -24,7 +24,7 @@ class HornedBeast extends React.Component {
         })
     }
 
-    handleShow =(event)=>{
+    handleShow =()=>{
         this.setState({
             show:true,
             imgURL:this.props.imgURL,
@@ -52,7 +52,7 @@ class HornedBeast extends React.Component {
 
     render() {
         return (
-            <div>
+            <>
                 <Card style={{ width: '18rem' }} >
                     <Card.Img onClick={this.handleShow} variant="top" src={this.props.imgURL} alt={this.props.title} title={this.props.title} />
                     <Card.Body>
@@ -80,7 +80,7 @@ class HornedBeast extends React.Component {
                     alt={this.props.title}
                     title={this.props.title} />
                 <p>😾: {this.state.likesCounter}</p> */}
-            </div>
+            </>
         )
     }
 }
