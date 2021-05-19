@@ -10,13 +10,12 @@ class App extends React.Component {
     this.state = {
       data: data
     }
+    console.log(data);
   }
 
   render() {
     return (
       <div>
-
-
         < Header />
         < Main data={this.state.data}/ >
         < Footer />

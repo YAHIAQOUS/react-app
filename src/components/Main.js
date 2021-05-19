@@ -4,9 +4,15 @@ import HornedBeast from './HornedBeasts'
 
 
 class Main extends React.Component {
+  // constructor(props){
+  //   super(props);
+  //   this.state={
+  //     show: false
+  //   }
+  // }
+
 
   render() {
-    // const data2 = <App data=/>
     return (
       <>
         {this.props.data.map(item => {
@@ -21,7 +27,6 @@ class Main extends React.Component {
       </>
     )
   }
-
 }
 export default Main;
 
